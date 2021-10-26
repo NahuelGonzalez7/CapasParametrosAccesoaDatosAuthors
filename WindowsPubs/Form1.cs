@@ -21,6 +21,23 @@ namespace WindowsPubs
         private void Form1_Load(object sender, EventArgs e)
         {
             mostrarAuthors();
+            llenarComboCategoria();
+        }
+
+        private void llenarComboCategoria()
+        {
+            DataTable author = AdmAuthor.listarSoloCiudades();
+
+            cbCiudad.DataSource = author;
+            cbCiudad.DisplayMember = author.Columns["city"].ToString();
+            cbCiudad.ValueMember = author.Columns["city"].ToString();
+
+            // Agregar una fila al DataTable "Author" en memoria
+
+            DataRow fila = author.NewRow();
+            fila["city"] = 0;
+            fila["city"] = "TODAS";
+            author.Rows.Add(fila);
         }
 
         private void mostrarAuthors()
@@ -46,5 +63,22 @@ namespace WindowsPubs
 
             gridListAuthor.DataSource = AdmAuthor.listarAuthors(cityBusqueda, stateBusqueda);
         }
+
+        private void cbCiudad_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            // El selectedValueCaptura la ciudad de "ValueMember"
+
+            string city = Convert.ToString(cbCiudad.SelectedValue);
+
+            if (city == "TODAS")
+            {
+                mostrarAuthors();
+            }
+            else
+            {
+                gridListAuthor.DataSource = AdmAuthor.listarDataTable(city);
+            }
+        }
+
     }
 }

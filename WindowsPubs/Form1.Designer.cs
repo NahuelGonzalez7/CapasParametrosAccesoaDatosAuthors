@@ -40,6 +40,8 @@ namespace WindowsPubs
             this.btnTraerCityState = new System.Windows.Forms.Button();
             this.lblCiudad = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
+            this.cbCiudad = new System.Windows.Forms.ComboBox();
+            this.lblBuscarCiudad = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridListAuthor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +66,7 @@ namespace WindowsPubs
             // 
             // btnMostrarTodos
             // 
-            this.btnMostrarTodos.Location = new System.Drawing.Point(599, 101);
+            this.btnMostrarTodos.Location = new System.Drawing.Point(960, 89);
             this.btnMostrarTodos.Name = "btnMostrarTodos";
             this.btnMostrarTodos.Size = new System.Drawing.Size(248, 99);
             this.btnMostrarTodos.TabIndex = 2;
@@ -140,11 +142,32 @@ namespace WindowsPubs
             this.lblEstado.TabIndex = 10;
             this.lblEstado.Text = "Estado";
             // 
+            // cbCiudad
+            // 
+            this.cbCiudad.FormattingEnabled = true;
+            this.cbCiudad.Location = new System.Drawing.Point(521, 52);
+            this.cbCiudad.Name = "cbCiudad";
+            this.cbCiudad.Size = new System.Drawing.Size(268, 21);
+            this.cbCiudad.TabIndex = 11;
+//            this.cbCiudad.SelectedIndexChanged += new System.EventHandler(this.cbCiudad_SelectedIndexChanged);
+            this.cbCiudad.SelectionChangeCommitted += new System.EventHandler(this.cbCiudad_SelectionChangeCommitted);
+            // 
+            // lblBuscarCiudad
+            // 
+            this.lblBuscarCiudad.AutoSize = true;
+            this.lblBuscarCiudad.Location = new System.Drawing.Point(420, 60);
+            this.lblBuscarCiudad.Name = "lblBuscarCiudad";
+            this.lblBuscarCiudad.Size = new System.Drawing.Size(86, 13);
+            this.lblBuscarCiudad.TabIndex = 12;
+            this.lblBuscarCiudad.Text = "Filtrar por Ciudad";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1220, 450);
+            this.Controls.Add(this.lblBuscarCiudad);
+            this.Controls.Add(this.cbCiudad);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.lblCiudad);
             this.Controls.Add(this.btnTraerCityState);
@@ -178,6 +201,8 @@ namespace WindowsPubs
         private System.Windows.Forms.Button btnTraerCityState;
         private System.Windows.Forms.Label lblCiudad;
         private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.ComboBox cbCiudad;
+        private System.Windows.Forms.Label lblBuscarCiudad;
     }
 }
 

@@ -125,5 +125,49 @@ namespace Datos.Admin
 
             return authorsList;
         }
+
+        public static DataTable listarDataTable(string city)
+        {
+            //Query
+
+            string consultaSQL = " SELECT au_id , au_lname, au_fname, phone, address , city , state, zip, contract FROM dbo.authors WHERE city = @city";
+
+            // Declarar y crear un SQLDataAdapter
+
+            SqlDataAdapter adapter = new SqlDataAdapter(consultaSQL, AdminBD.conectarBase());
+
+            adapter.SelectCommand.Parameters.Add("@city", SqlDbType.VarChar, 20).Value = city;
+
+            // Declarar y crear un DataSet
+
+            DataSet ds = new DataSet();
+
+            // Invocar al fill --> conecta a la BD, Ejecuta el Select, Crear DataTable y se desconecta
+
+            adapter.Fill(ds, "City");
+
+            return ds.Tables["City"];
+        }
+
+        public static DataTable listarSoloCiudades()
+        {
+            //Query
+
+            string consultaSQL = " SELECT DISTINCT city FROM dbo.authors";
+
+            // Declarar y crear un SQLDataAdapter
+
+            SqlDataAdapter adapter = new SqlDataAdapter(consultaSQL, AdminBD.conectarBase());
+
+            // Declarar y crear un DataSet
+
+            DataSet ds = new DataSet();
+
+            // Invocar al fill --> conecta a la BD, Ejecuta el Select, Crear DataTable y se desconecta
+
+            adapter.Fill(ds, "City");
+
+            return ds.Tables["City"];
+        }
     }
 }
